@@ -1,0 +1,159 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+    <meta HTTP-EQUIV="EXPIRES" CONTENT="0">
+    <meta HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <link rel="shortcut icon" href="#">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="Content/bootstrap.min.css">
+    <!-- v-charts CSS -->
+    <link rel="stylesheet" href="Content/style.min.css">
+
+    <title>InpatientTPR</title>
+    <style>
+        #biggest_box {
+            width: 1200px;
+            height: auto;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+        }
+
+        .b01 {
+            display: inline-block;
+            vertical-align: top;
+            width: 400px;
+            height: 50px;
+        }
+
+        div {
+            font-family: '微軟正黑體';
+            font-size: 20px;
+            padding: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="biggest_box" class="big_box">
+        <div class="row">
+            <div class="col-10 b01">
+                <div>住院病人生理監測</div>
+            </div>
+            <div class="col-2 b01">
+                <button type="button" class="btn btn-primary" v-on:click="save_TPR()">存檔</button>
+            </div>
+        </div>
+
+        <div class="basic" id="basic_inf">
+            <div class="row">
+                <div class="col-1">病歷號:</div>
+                <div class="col-2">
+                    <input type="text" class="form-control" v-model="saveTPR.PatNO">
+                </div>
+                <div class="col-2-sm">
+                    <button type="button" class="btn btn-primary" id="search" v-on:click="get_inf()">查詢</button>
+                </div>
+                <div class="col-2 pat_bi">
+                    <div class="shadow-sm p-1 mb-1 bg-white rounded" v-text="name">name</div>
+                </div>
+                <div class="col-1">
+                    <div class="shadow-sm p-1 mb-1 bg-white rounded" v-text="sex">sex</div>
+                </div>
+                <div class="col-1">
+                    <span class="input-group-text" v-if="this.sex=='M'">
+                        <img src="pic/male.png" width="25px" height="25px">
+                    </span>
+                    <span class="input-group-text" v-if="this.sex=='F'">
+                        <img src="pic/female.png" width="25px" height="25px">
+                    </span>
+                </div>
+                <div class="col-2">
+                    <div class="shadow-sm p-1 mb-1 bg-white rounded" v-text="birth">birth</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="date_time">
+            <div class="row">
+                <div class="col-auto">監測時間:</div>
+                <div class="col-auto">
+                    <input type="date" class="form-control" v-model="this.date">
+                </div>
+                <div class="col-auto">
+                    <input type="time" class="form-control" v-model="this.time">
+                </div>
+            </div>
+        </div>
+        <form>
+            <div class="data_input">
+                <div class="row">
+
+                    <div class="col-1 result">體溫:</div>
+                    <div class="col-3">
+                        <input type="text" class="form-control" v-model="saveTPR.Temperature">
+                    </div>
+                    <div class="col-1 unit">度</div>
+
+                    <div class="col-1 result">體重:</div>
+                    <div class="col-3">
+                        <input type="text" class="form-control" v-model="saveTPR.Weight">
+                    </div>
+                    <div class="col-1 unit">kg</div>
+                </div>
+                <div class="row">
+                    <div class="col-1 result">心跳:</div>
+                    <div class="col-3">
+                        <input type="text" class="form-control" v-model="saveTPR.Pulse">
+                    </div>
+                    <div class="col-1 unit">下</div>
+                    <div class="col-1 result">呼吸:</div>
+                    <div class="col-3">
+                        <input type="text" class="form-control" v-model="saveTPR.Breath">
+                    </div>
+                    <div class="col-1 unit">下</div>
+                </div>
+                <div class="row">
+                    <div class="col-1 result">舒張壓:</div>
+                    <div class="col-3">
+                        <input type="text" class="form-control" v-model="saveTPR.DBP">
+                    </div>
+                    <div class="col-1 unit">mmHg</div>
+                    <div class="col-1 result">收縮壓:</div>
+                    <div class="col-3">
+                        <input type="text" class="form-control" v-model="saveTPR.SBP">
+                    </div>
+                    <div class="col-1 unit">mmHg</div>
+                </div>
+                <div class="row">
+                    <div class="col-1 result">SpO2:</div>
+                    <div class="col-3">
+                        <input type="text" class="form-control" v-model="saveTPR.SPO2">
+                    </div>
+                    <div class="col-1 unit">%</div>
+                </div>
+            </div>
+        </form>
+        <div v-if="this.show_chart == true">
+            <ve-line :data="chartData"></ve-line>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap JS, then Vue.js, then axios, then my js, and two v-charts js -->
+    <script src="Scripts/jquery-3.4.1.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/axios.js"></script>
+    <script src="Scripts/vue.js"></script>
+    <script src="Scripts/echarts.min.js"></script>
+    <script src="Scripts/index.min.js"></script>
+    <script src="Scripts/InpatientTPRjs.js?2"></script>
+</body>
+
+</html>

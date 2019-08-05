@@ -1,0 +1,8 @@
+C:\Users\E0052\Documents\Visual Studio 2015\Projects\InpatientTPR\InpatientTPR001\bin\InpatientTPR001.dll.config
+C:\Users\E0052\Documents\Visual Studio 2015\Projects\InpatientTPR\InpatientTPR001\bin\InpatientTPR001.dll
+C:\Users\E0052\Documents\Visual Studio 2015\Projects\InpatientTPR\InpatientTPR001\bin\InpatientTPR001.pdb
+C:\Users\E0052\Documents\Visual Studio 2015\Projects\InpatientTPR\InpatientTPR001\bin\UsersComponent.dll
+C:\Users\E0052\Documents\Visual Studio 2015\Projects\InpatientTPR\InpatientTPR001\bin\WebERP.dll
+C:\Users\E0052\Documents\Visual Studio 2015\Projects\InpatientTPR\InpatientTPR001\obj\Debug\InpatientTPR001.dll
+C:\Users\E0052\Documents\Visual Studio 2015\Projects\InpatientTPR\InpatientTPR001\obj\Debug\InpatientTPR001.pdb
+C:\Users\E0052\Documents\Visual Studio 2015\Projects\InpatientTPR\InpatientTPR001\obj\Debug\InpatientTPR.csprojResolveAssemblyReference.cache

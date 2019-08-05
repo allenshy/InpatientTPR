@@ -1,0 +1,8 @@
+c:\users\e0052\documents\visual studio 2015\Projects\InpatientTPR001\InpatientTPR001\obj\Debug\InpatientTPR001.csprojResolveAssemblyReference.cache
+c:\users\e0052\documents\visual studio 2015\Projects\InpatientTPR001\InpatientTPR001\bin\InpatientTPR001.dll
+c:\users\e0052\documents\visual studio 2015\Projects\InpatientTPR001\InpatientTPR001\bin\InpatientTPR001.pdb
+c:\users\e0052\documents\visual studio 2015\Projects\InpatientTPR001\InpatientTPR001\bin\UsersComponent.dll
+c:\users\e0052\documents\visual studio 2015\Projects\InpatientTPR001\InpatientTPR001\bin\WebERP.dll
+c:\users\e0052\documents\visual studio 2015\Projects\InpatientTPR001\InpatientTPR001\obj\Debug\InpatientTPR001.dll
+c:\users\e0052\documents\visual studio 2015\Projects\InpatientTPR001\InpatientTPR001\obj\Debug\InpatientTPR001.pdb
+c:\users\e0052\documents\visual studio 2015\Projects\InpatientTPR001\InpatientTPR001\bin\InpatientTPR001.dll.config
