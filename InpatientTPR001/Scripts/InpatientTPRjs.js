@@ -1,36 +1,3 @@
-
-
-
-let Inpatient_data = {
-    name: '姓名',
-    sex: '性別',
-    birth: '生日民國年月日',
-    date: '',
-    time: '',
-    begDate: '',
-    endDate: '',
-    show_chart: false,
-    chartSettings: {
-        area: 'true'
-    },
-    chartData: {
-        columns: ['Time', 'Breath', 'DBP', 'Pulse', 'SBP', 'SPO2', 'Temperature', 'Weight'],
-        rows: []
-    },
-    saveTPR: {
-        PatNO: '',
-        MonitorDate: '',
-        MonitorTime: '',
-        Temperature: '',
-        Weight: '',
-        Pulse: '',
-        Breath: '',
-        DBP: '',
-        SBP: '',
-        SPO2: ''
-    }
-}
-
 Date.prototype.format = function (fmt) {
     var o = {
         "M+": this.getMonth() + 1,                    //月份 
@@ -57,23 +24,64 @@ Date.prototype.addDays = function (days) {
     return this;
 }
 
+let Inpatient_data = {
+    name: '姓名',
+    sex: '性別',
+    birth: '生日民國年月日',
+    date: '',
+    time: '',
+    begDate: '',
+    endDate: '',
+    show_chart: false,
+    chartData: {
+        columns: ['Time', 'Breath', 'DBP', 'Pulse', 'SBP', 'SPO2', 'Temperature', 'Weight'],
+        rows: []
+    },
+    chartEvents: {
+        click(e) {
+            console.log(e)
+        },
+    },
+    dataZoom: {
+        type: 'slider',
+        start: 0,
+        end: 20
+    },
+    loading: true,
+    saveTPR: {
+        PatNO: '',
+        MonitorDate: '',
+        MonitorTime: '',
+        Temperature: '',
+        Weight: '',
+        Pulse: '',
+        Breath: '',
+        DBP: '',
+        SBP: '',
+        SPO2: ''
+    },
+
+}
 
 let Inpatient = new Vue({
     el: '#biggest_box',
     data: Inpatient_data,
-
     methods: {
         get_inf() {
-            if (this.saveTPR.PatNO != null) {
-                this.date = new Date().format("yyyy-MM-dd")
-                this.time = new Date().format("hh:mm")
-                this.saveTPR.MonitorDate = new Date().format("yyyyMMdd")
-                this.saveTPR.MonitorTime = new Date().format("hhmm")
+            if (this.saveTPR.PatNO == "") {
+                alert('誰人?')
+            } else {
+                if (this.date == "") {
+                    const use_date = new Date
+                    this.date = use_date.format("yyyy-MM-dd")
+                    this.time = use_date.format("hh:mm")
 
+                    this.saveTPR.MonitorDate = use_date.format("yyyyMMdd")
+                    this.saveTPR.MonitorTime = use_date.format("hhmm")
 
-                var thisDay = new Date
-                this.endDate = thisDay.format("yyyyMMdd")
-                this.begDate = thisDay.addDays(-7).format("yyyyMMdd")
+                    this.endDate = use_date.format("yyyyMMdd")
+                    this.begDate = use_date.addDays(-7).format("yyyyMMdd")
+                }
 
                 axios
                     .post('WebService/InpatientTPRWS.asmx/GetPatientData', { patNo: this.saveTPR.PatNO })
@@ -81,6 +89,8 @@ let Inpatient = new Vue({
                         this.name = res.data.d.PatName
                         this.sex = res.data.d.Sex
                         this.birth = res.data.d.Birthday
+
+
                     }).catch((err) => {
                         console.log(err)
                     })
@@ -89,7 +99,7 @@ let Inpatient = new Vue({
                     .then((res) => {
 
                         this.chartData.rows = res.data.d
-                        this.show_chart = true
+                        this.loading = false
 
                     }).catch((err) => {
                         console.log(err)
@@ -111,8 +121,22 @@ let Inpatient = new Vue({
                 }).catch((err) => {
 
                 })
+        },
+
+    },
+
+    watch: {
+        date(oldval, val) {
+
+            this.saveTPR.MonitorDate = oldval.substr(0, 3) + oldval.substr(5, 2) + oldval.substr(8, 2)
+            console.log(oldval, val, this.saveTPR.MonitorDate)
+        },
+        time(oldval, val) {
+            this.saveTPR.MonitorTime = oldval.substr(0, 2) + oldval.substr(3, 2)
+            console.log(oldval, val, this.saveTPR.MonitorTime)
         }
-    }
+
+    },
 });
 
 

@@ -85,10 +85,10 @@
             <div class="row">
                 <div class="col-auto">監測時間:</div>
                 <div class="col-auto">
-                    <input type="date" class="form-control" v-model="this.date">
+                    <input type="date" class="form-control" v-model="date">
                 </div>
                 <div class="col-auto">
-                    <input type="time" class="form-control" v-model="this.time">
+                    <input type="time" class="form-control" v-model="time">
                 </div>
             </div>
         </div>
@@ -141,8 +141,8 @@
                 </div>
             </div>
         </form>
-        <div v-if="this.show_chart == true">
-            <ve-line :data="chartData"></ve-line>
+        <div v-if="this.chartData.rows != ''">
+            <ve-line :data="chartData" :data-zoom="dataZoom" :loading="loading" :events="chartEvents"></ve-line>
         </div>
     </div>
     <!-- Optional JavaScript -->
@@ -153,7 +153,7 @@
     <script src="Scripts/vue.js"></script>
     <script src="Scripts/echarts.min.js"></script>
     <script src="Scripts/index.min.js"></script>
-    <script src="Scripts/InpatientTPRjs.js?2"></script>
+    <script src="Scripts/InpatientTPRjs.js?3"></script>
 </body>
 
 </html>
